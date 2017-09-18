@@ -1,4 +1,4 @@
-var weatherData = "", uvData = "";
+var weatherData = "", uvData = "",RGBStart=0,RGBTimer;
 //http://api.openweathermap.org/img/w/.png
 $(function () {
     navigator.geolocation.getCurrentPosition(function (location) {
@@ -25,10 +25,31 @@ $(function () {
             console.log(uvData[0].value);
             $("#uvValue").html("<h2>UV: " + uvData[0].value + "</h2>");
         });
-
-        
-       
     });
-
+    $('#btnCpfRestart').click(function () {
+        if (RGBStart == 0 ) setup();
+    })
+    setup();
 })
 
+function setup() {
+    if (cpf) {
+        var ret = cpf.setPinMode('["resetPin"],["setPinMode", "analog", 0, "INPUT"],["setPinMode", "analog", 1,"INPUT"],["grove_newChainableLED", 7, 8, 1]');
+        cpfStart();
+    }
+    else alert('雲教授未連接');
+}
+
+function cpfStart() {
+    if (weatherData != '' && uvData != '' && RGBStart == 0) {
+        clearInterval(RGBTimer);
+
+        RGBStart = 1;
+    } else if (weatherData == '' || uvData == '') {
+        RGBTimer = setInterval(cpfStart, 500);
+    }
+}
+
+function cpfLoop() {
+    
+}

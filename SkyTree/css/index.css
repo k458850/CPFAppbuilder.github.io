@@ -10,7 +10,24 @@
     margin-top:30px;
 }
 
+#btnDiv {
+    
+    text-align: center;
+}
+
+#btnCpfRestart {
+    margin: auto;
+    font-size:25px;
+    padding:15px 30px;
+    color:white;
+}
+
 body {
     background: url("../img/cloud.png") no-repeat;
     background-size: cover;
+    width:100%;
+}
+
+html{
+    width:100%;
 }
