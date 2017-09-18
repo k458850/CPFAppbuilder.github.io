@@ -1,0 +1,16 @@
+#panel {
+    margin: auto;
+    text-align: center;
+    padding: 50px 25px;
+    border: solid 5px blue;
+    background: aquamarine;
+}
+
+#panelTable{
+    margin-top:30px;
+}
+
+body {
+    background: url("../img/cloud.png") no-repeat;
+    background-size: cover;
+}
