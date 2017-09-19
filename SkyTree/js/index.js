@@ -67,7 +67,6 @@ function cpfStart() {
         clearInterval(CPFStartTimer);
         CPFLoopTimer = setInterval(cpfLoop, 1000);
         RGBStart = 1;
-
     } else if (weatherData == '' || uvData == '') {
         CPFStartTimer = setInterval(cpfStart, 500);
     }
@@ -125,9 +124,8 @@ function cpfLoop() {
         var ledR = color.r / 15 * ledFlashCount;
         var ledG = color.g / 15 * ledFlashCount;
         var ledB = color.b / 15 * ledFlashCount;
-        cpf.setChainableLed("0," + 255 + "," + 255 + "," + 255 + "; 1," + 255 + "," + 255 + "," + 255 + ";");
         cpf.setChainableLed("0," + ledR + "," + ledG + "," + ledB + ";");
-        
+        document.write("R:"+ledR+",G:"+ledG+",B:"+ledB);
         color = getWeatherRGBColor(uvData[0].value);
         ledR = color.r / 15 * ledFlashCount;
         ledG = color.g / 15 * ledFlashCount;
