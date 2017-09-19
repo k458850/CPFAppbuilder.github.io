@@ -110,7 +110,7 @@ function cpfLoop() {
         ledR = color.r / 15 * ledFlashCount;
         ledG = color.g / 15 * ledFlashCount;
         ledB = color.b / 15 * ledFlashCount;
-        if (cpf) cpf.setChainableLed("0," + ledR + "," + ledG + "," + ledB + ";");
+        if (cpf) cpf.setChainableLed("1," + ledR + "," + ledG + "," + ledB + ";");
         if (ledFlashCount >= 15) ledFlashDirection = 1;
     } else {
         ledFlashCount--;
