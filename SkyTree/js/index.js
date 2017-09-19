@@ -118,13 +118,14 @@ function getUVRGBColor(number) {
 }
 
 function cpfLoop() {
-    cpf.setChainableLed("0," + 255 + "," + 255 + "," + 255 + "; 1," + 255 + "," + 255 + "," + 255 + ";");
+    
     if (ledFlashDirection==0) {
         ledFlashCount++;
         var color = getWeatherRGBColor(weatherData.main.temp);
         var ledR = color.r / 15 * ledFlashCount;
         var ledG = color.g / 15 * ledFlashCount;
         var ledB = color.b / 15 * ledFlashCount;
+        cpf.setChainableLed("0," + 255 + "," + 255 + "," + 255 + "; 1," + 255 + "," + 255 + "," + 255 + ";");
         cpf.setChainableLed("0," + ledR + "," + ledG + "," + ledB + ";");
         
         color = getWeatherRGBColor(uvData[0].value);
