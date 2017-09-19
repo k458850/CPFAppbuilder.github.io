@@ -64,7 +64,6 @@ function setup() {
 
 function cpfStart() {
     if (weatherData != '' && uvData != '' && RGBStart == 0) {
-        cpf.setChainableLed("0," + 255 + "," + 0 + "," + 255 + "; 1," + 255 + "," + 255 + "," + 0 + ";");
         clearInterval(CPFStartTimer);
         CPFLoopTimer = setInterval(cpfLoop, 1000);
         
@@ -146,7 +145,7 @@ function cpfLoop() {
         ledR = color.r / 15 * ledFlashCount;
         ledG = color.g / 15 * ledFlashCount;
         ledB = color.b / 15 * ledFlashCount;
-        cpf.setChainableLed("0," + ledR + "," + ledG + "," + ledB + ";");
+        cpf.setChainableLed("1," + ledR + "," + ledG + "," + ledB + ";");
         if (ledFlashCount <= 0) ledFlashDirection = 0;
     }
 }
