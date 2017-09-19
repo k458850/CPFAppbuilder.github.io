@@ -57,6 +57,7 @@ function setup() {
     if (cpf) {
         var ret = cpf.setPinMode('["resetPin"],["setPinMode", "analog", 0, "INPUT"],["setPinMode", "analog", 1,"INPUT"],["grove_newChainableLED", 7, 8, 1]');
         cpf.setChainableLed("0," + 255 + "," + 0 + "," + 0 + ";");
+        cpf.setChainableLed("1," + 0 + "," + 255 + "," + 0 + ";");
         cpfStart();
     }
     else alert('雲教授未連接');
