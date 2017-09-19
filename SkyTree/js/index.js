@@ -3,7 +3,7 @@
 //http://api.openweathermap.org/img/w/.png
 $(function () {
     if (navigator.geolocation) {
-
+        alert('gps ready');
         navigator.geolocation.getCurrentPosition(getInformation, errorCallback);
     } else {
         alert('您的瀏覽器不支援定位功能');
@@ -13,6 +13,7 @@ $(function () {
 })
 
 function errorCallback(error) {
+    alert('gps error');
     var errorTypes = {
         0: "不明原因錯誤",
         1: "使用者拒絕提供位置資訊",
