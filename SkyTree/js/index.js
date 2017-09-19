@@ -56,7 +56,7 @@ $('#btnCpfRestart').click(function () {
 function setup() {
     if (cpf) {
         var ret = cpf.setPinMode('["resetPin"],["setPinMode", "analog", 0, "INPUT"],["setPinMode", "analog", 1,"INPUT"],["grove_newChainableLED", 7, 8, 2]');
-        cpf.setChainableLed("0," + 255 + "," + 0 + "," + 0 + "; 1," + 0 + "," + 255 + "," + 0 + ";");
+        cpf.setChainableLed("0," + 255 + "," + 255 + "," + 255 + "; 1," + 255 + "," + 255 + "," + 255 + ";");
         cpfStart();
     }
     else alert('雲教授未連接');
@@ -66,6 +66,7 @@ function cpfStart() {
     if (weatherData != '' && uvData != '' && RGBStart == 0) {
         clearInterval(CPFStartTimer);
         CPFLoopTimer = setInterval(cpfLoop, 1000);
+        cpf.setChainableLed("0," + 255 + "," + 0 + "," + 255 + "; 1," + 255 + "," + 255 + "," + 0 + ";");
         RGBStart = 1;
     } else if (weatherData == '' || uvData == '') {
         CPFStartTimer = setInterval(cpfStart, 500);
