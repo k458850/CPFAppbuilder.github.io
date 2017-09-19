@@ -1,5 +1,5 @@
 ﻿var weatherData = "", uvData = "", RGBStart = 0, CPFStartTimer, CPFLoopTimer,ledFlashCount=0,ledFlashDirection=0;
-
+alert('alert');
 //http://api.openweathermap.org/img/w/.png
 $(function () {
     if (navigator.geolocation) {
