@@ -2,21 +2,16 @@
 
 //http://api.openweathermap.org/img/w/.png
 $(function () {
-    //alert('alert');
     if (navigator.geolocation) {
-        alert('gps ready');
         navigator.geolocation.getCurrentPosition(getInformation, errorCallback);
     } else {
         alert('您的瀏覽器不支援定位功能');
         var gpsData = { "coords": { "latitude": '24.1372291', "longitude": '120.6809453' } }
         getInformation(gpsData);
     }
-    //var gpsData = { "coords": { "latitude": '24.1372291', "longitude": '120.6809453' } }
-    //getInformation(gpsData);
 })
 
 function errorCallback(error) {
-    alert('gps error');
     var errorTypes = {
         0: "不明原因錯誤",
         1: "使用者拒絕提供位置資訊",
@@ -61,6 +56,7 @@ $('#btnCpfRestart').click(function () {
 function setup() {
     if (cpf) {
         var ret = cpf.setPinMode('["resetPin"],["setPinMode", "analog", 0, "INPUT"],["setPinMode", "analog", 1,"INPUT"],["grove_newChainableLED", 7, 8, 1]');
+        cpf.setChainableLed("0," + 255 + "," + 0 + "," + 0 + ";");
         cpfStart();
     }
     else alert('雲教授未連接');
