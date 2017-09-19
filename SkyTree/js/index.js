@@ -64,9 +64,10 @@ function setup() {
 
 function cpfStart() {
     if (weatherData != '' && uvData != '' && RGBStart == 0) {
+        cpf.setChainableLed("0," + 255 + "," + 0 + "," + 255 + "; 1," + 255 + "," + 255 + "," + 0 + ";");
         clearInterval(CPFStartTimer);
         CPFLoopTimer = setInterval(cpfLoop, 1000);
-        cpf.setChainableLed("0," + 255 + "," + 0 + "," + 255 + "; 1," + 255 + "," + 255 + "," + 0 + ";");
+        
         RGBStart = 1;
     } else if (weatherData == '' || uvData == '') {
         CPFStartTimer = setInterval(cpfStart, 500);
