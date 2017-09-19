@@ -65,7 +65,7 @@ function setup() {
 function cpfStart() {
     if (weatherData != '' && uvData != '' && RGBStart == 0) {
         clearInterval(CPFStartTimer);
-        CPFLoopTimer = setInterval(cpfLoop, 300);
+        CPFLoopTimer = setInterval(cpfLoop, 1000);
         RGBStart = 1;
     } else if (weatherData == '' || uvData == '') {
         CPFStartTimer = setInterval(cpfStart, 500);
@@ -124,13 +124,13 @@ function cpfLoop() {
         var ledR = color.r / 15 * ledFlashCount;
         var ledG = color.g / 15 * ledFlashCount;
         var ledB = color.b / 15 * ledFlashCount;
-        if (cpf) cpf.setChainableLed("0," + ledR + "," + ledG + "," + ledB + ";");
+        cpf.setChainableLed("0," + ledR + "," + ledG + "," + ledB + ";");
         
         color = getWeatherRGBColor(uvData[0].value);
         ledR = color.r / 15 * ledFlashCount;
         ledG = color.g / 15 * ledFlashCount;
         ledB = color.b / 15 * ledFlashCount;
-        if (cpf) cpf.setChainableLed("1," + ledR + "," + ledG + "," + ledB + ";");
+        cpf.setChainableLed("1," + ledR + "," + ledG + "," + ledB + ";");
         if (ledFlashCount >= 15) ledFlashDirection = 1;
     } else {
         ledFlashCount--;
@@ -138,13 +138,13 @@ function cpfLoop() {
         var ledR = color.r / 15 * ledFlashCount;
         var ledG = color.g / 15 * ledFlashCount;
         var ledB = color.b / 15 * ledFlashCount;
-        if (cpf) cpf.setChainableLed("0," + ledR + "," + ledG + "," + ledB + ";");
+        cpf.setChainableLed("0," + ledR + "," + ledG + "," + ledB + ";");
 
         color = getWeatherRGBColor(uvData[0].value);
         ledR = color.r / 15 * ledFlashCount;
         ledG = color.g / 15 * ledFlashCount;
         ledB = color.b / 15 * ledFlashCount;
-        if (cpf) cpf.setChainableLed("0," + ledR + "," + ledG + "," + ledB + ";");
+        cpf.setChainableLed("0," + ledR + "," + ledG + "," + ledB + ";");
         if (ledFlashCount <= 0) ledFlashDirection = 0;
     }
 }
