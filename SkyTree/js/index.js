@@ -3,16 +3,16 @@
 //http://api.openweathermap.org/img/w/.png
 $(function () {
     //alert('alert');
-    //if (navigator.geolocation) {
-    //    alert('gps ready');
-    //    navigator.geolocation.getCurrentPosition(getInformation, errorCallback);
-    //} else {
-    //    alert('您的瀏覽器不支援定位功能');
-    //    var gpsData = { "coords": { "latitude": '24.1372291', "longitude": '120.6809453' } }
-    //    getInformation(gpsData);
-    //}
-    var gpsData = { "coords": { "latitude": '24.1372291', "longitude": '120.6809453' } }
-    getInformation(gpsData);
+    if (navigator.geolocation) {
+        alert('gps ready');
+        navigator.geolocation.getCurrentPosition(getInformation, errorCallback);
+    } else {
+        alert('您的瀏覽器不支援定位功能');
+        var gpsData = { "coords": { "latitude": '24.1372291', "longitude": '120.6809453' } }
+        getInformation(gpsData);
+    }
+    //var gpsData = { "coords": { "latitude": '24.1372291', "longitude": '120.6809453' } }
+    //getInformation(gpsData);
 })
 
 function errorCallback(error) {
