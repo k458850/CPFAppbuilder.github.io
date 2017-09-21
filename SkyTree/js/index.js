@@ -73,21 +73,22 @@ function cpfStart() {
 }
 
 function getWeatherRGBColor(number) {
+    number = parseInt(number);
     var color = {};
-    switch (number){
+    switch (true){
         case number < 20:
             color.r = 0, color.g = 0, color.b = 235;
             break;
-        case number >= 20 && number < 25:
+        case number < 25:
             color.r = 0, color.g = 100, color.b = 110;
             break;
-        case number >= 25 && number < 30:
+        case number < 30:
             color.r = 0, color.g = 219, color.b = 219;
             break;
-        case number >= 30 && number < 35:
+        case number < 35:
             color.r = 25, color.g = 142, color.b = 0;
             break;
-        case number >= 35 && number < 40:
+        case number < 40:
             color.r = 206, color.g = 0, color.b = 0;
             break;
     }
@@ -96,17 +97,17 @@ function getWeatherRGBColor(number) {
 
 function getUVRGBColor(number) {
     var color = {};
-    switch (number) {
+    switch (true) {
         case number < 3:
             color.r = 0, color.g = 255, color.b = 0;
             break;
-        case number >= 3 && number < 6:
+        case number < 6:
             color.r = 255, color.g = 255, color.b = 0;
             break;
-        case number >= 6 && number < 8:
+        case number < 8:
             color.r = 255, color.g = 128, color.b = 0;
             break;
-        case number >= 8 && number < 11:
+        case number < 11:
             color.r = 255, color.g = 0, color.b = 0;
             break;
         case number >= 11 :
@@ -121,15 +122,15 @@ function cpfLoop() {
     if (ledFlashDirection==0) {
         ledFlashCount++;
         var color = getWeatherRGBColor(weatherData.main.temp);
-        document.write(color.r);
-        document.write('2');
+        //console.log(color);
+        //document.write('2');
         var ledR = color.r / 15 * ledFlashCount;
         var ledG = color.g / 15 * ledFlashCount;
         var ledB = color.b / 15 * ledFlashCount;
         
         cpf.setChainableLed("0," + ledR + "," + ledG + "," + ledB + ";");
         
-        color = getWeatherRGBColor(uvData[0].value);
+        color = getUVRGBColor(uvData[0].value);
         ledR = color.r / 15 * ledFlashCount;
         ledG = color.g / 15 * ledFlashCount;
         ledB = color.b / 15 * ledFlashCount;
@@ -143,7 +144,7 @@ function cpfLoop() {
         var ledB = color.b / 15 * ledFlashCount;
         cpf.setChainableLed("0," + ledR + "," + ledG + "," + ledB + ";");
 
-        color = getWeatherRGBColor(uvData[0].value);
+        color = getUVRGBColor(uvData[0].value);
         ledR = color.r / 15 * ledFlashCount;
         ledG = color.g / 15 * ledFlashCount;
         ledB = color.b / 15 * ledFlashCount;
