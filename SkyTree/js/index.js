@@ -1,6 +1,5 @@
 ﻿var weatherData = "", uvData = "", RGBStart = 0, CPFStartTimer, CPFLoopTimer,ledFlashCount=0,ledFlashDirection=0;
 
-//http://api.openweathermap.org/img/w/.png
 $(function () {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(getInformation, errorCallback);
@@ -65,7 +64,7 @@ function setup() {
 function cpfStart() {
     if (weatherData != '' && uvData != '' && RGBStart == 0) {
         clearInterval(CPFStartTimer);
-        CPFLoopTimer = setInterval(cpfLoop, 1000);
+        CPFLoopTimer = setInterval(cpfLoop, 500);
         RGBStart = 1;
     } else if (weatherData == '' || uvData == '') {
         CPFStartTimer = setInterval(cpfStart, 500);
@@ -122,12 +121,9 @@ function cpfLoop() {
     if (ledFlashDirection==0) {
         ledFlashCount++;
         var color = getWeatherRGBColor(weatherData.main.temp);
-        //console.log(color);
-        //
         var ledR = Math.floor(color.r / 15 * ledFlashCount);
         var ledG = Math.floor(color.g / 15 * ledFlashCount);
         var ledB = Math.floor(color.b / 15 * ledFlashCount);
-        document.write(ledR);
         cpf.setChainableLed("0," + ledR + "," + ledG + "," + ledB + ";");
         
         color = getUVRGBColor(uvData[0].value);
