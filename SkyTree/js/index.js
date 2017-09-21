@@ -117,13 +117,14 @@ function getUVRGBColor(number) {
 }
 
 function cpfLoop() {
-    document.write("123");
+
     if (ledFlashDirection==0) {
         ledFlashCount++;
         var color = getWeatherRGBColor(weatherData.main.temp);
         var ledR = color.r / 15 * ledFlashCount;
         var ledG = color.g / 15 * ledFlashCount;
         var ledB = color.b / 15 * ledFlashCount;
+        document.write(ledR);
         cpf.setChainableLed("0," + ledR + "," + ledG + "," + ledB + ";");
         
         color = getWeatherRGBColor(uvData[0].value);
