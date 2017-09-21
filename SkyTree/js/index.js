@@ -124,30 +124,30 @@ function cpfLoop() {
         var color = getWeatherRGBColor(weatherData.main.temp);
         //console.log(color);
         //document.write('2');
-        var ledR = color.r / 15 * ledFlashCount;
-        var ledG = color.g / 15 * ledFlashCount;
-        var ledB = color.b / 15 * ledFlashCount;
+        var ledR = Math.floor(color.r / 15 * ledFlashCount);
+        var ledG = Math.floor(color.g / 15 * ledFlashCount);
+        var ledB = Math.floor(color.b / 15 * ledFlashCount);
         
         cpf.setChainableLed("0," + ledR + "," + ledG + "," + ledB + ";");
         
         color = getUVRGBColor(uvData[0].value);
-        ledR = color.r / 15 * ledFlashCount;
-        ledG = color.g / 15 * ledFlashCount;
-        ledB = color.b / 15 * ledFlashCount;
+        ledR = Math.floor(color.r / 15 * ledFlashCount);
+        ledG = Math.floor(color.g / 15 * ledFlashCount);
+        ledB = Math.floor(color.b / 15 * ledFlashCount);
         cpf.setChainableLed("1," + ledR + "," + ledG + "," + ledB + ";");
         if (ledFlashCount >= 15) ledFlashDirection = 1;
     } else {
         ledFlashCount--;
         var color = getWeatherRGBColor(weatherData.main.temp);
-        var ledR = color.r / 15 * ledFlashCount;
-        var ledG = color.g / 15 * ledFlashCount;
-        var ledB = color.b / 15 * ledFlashCount;
+        var ledR = Math.floor(color.r / 15 * ledFlashCount);
+        var ledG = Math.floor(color.g / 15 * ledFlashCount);
+        var ledB = Math.floor(color.b / 15 * ledFlashCount);
         cpf.setChainableLed("0," + ledR + "," + ledG + "," + ledB + ";");
 
         color = getUVRGBColor(uvData[0].value);
-        ledR = color.r / 15 * ledFlashCount;
-        ledG = color.g / 15 * ledFlashCount;
-        ledB = color.b / 15 * ledFlashCount;
+        ledR = Math.floor(color.r / 15 * ledFlashCount);
+        ledG = Math.floor(color.g / 15 * ledFlashCount);
+        ledB = Math.floor( color.b / 15 * ledFlashCount);
         cpf.setChainableLed("1," + ledR + "," + ledG + "," + ledB + ";");
         if (ledFlashCount <= 0) ledFlashDirection = 0;
     }
