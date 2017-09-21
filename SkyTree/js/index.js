@@ -121,8 +121,8 @@ function cpfLoop() {
     if (ledFlashDirection==0) {
         ledFlashCount++;
         var color = getWeatherRGBColor(weatherData.main.temp);
-        document.write(color);
-        document.write('1');
+        document.write(color.r);
+        document.write('2');
         var ledR = color.r / 15 * ledFlashCount;
         var ledG = color.g / 15 * ledFlashCount;
         var ledB = color.b / 15 * ledFlashCount;
